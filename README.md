@@ -1,1 +1,1 @@
-# devops
+Set of some useful devops scripts.
