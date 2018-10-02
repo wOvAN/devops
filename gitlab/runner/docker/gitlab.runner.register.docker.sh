@@ -1,5 +1,5 @@
 name="gitlab-runner"
-reg-token="<get it from gitlab>"
+reg_token="<get it from gitlab>"
 
 # manual configuration
 # docker exec -it ${name} gitlab-runner register
@@ -7,7 +7,7 @@ reg-token="<get it from gitlab>"
 # auto configuration
 docker exec -it ${name} gitlab-runner register -n \
     --url https://gitlab.example.com/ \
-    --registration-token ${reg-token} \
+    --registration-token ${reg_token} \
     --executor docker \
     --docker-image "docker:latest" \
     --docker-privileged \
