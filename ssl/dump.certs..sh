@@ -1,6 +1,6 @@
 CERT_DIR=./certs_dump
 
-SERVER=vlg-soc-web04t.megafon.ru
+SERVER=example.com
 PORT=443
 CERTIFICATE=$CERT_DIR/${SERVER}.crt
 
