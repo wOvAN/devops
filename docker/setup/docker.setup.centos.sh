@@ -15,8 +15,12 @@ sudo yum install -y docker-ce
 
 # 4
 
-systemctl enable docker
+/sbin/sysctl -w net.ipv4.conf.all.forwarding=1
 
 # 5
+ 
+systemctl enable docker
+
+# 6
 
 systemctl start docker
