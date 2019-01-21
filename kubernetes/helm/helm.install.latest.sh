@@ -1,3 +1,5 @@
-curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
-chmod 700 get_helm.sh -v latest
-./get_helm.sh
+script="./get_helm.sh"
+curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > ${script}
+chmod +x ${script}
+${script} -v latest
+rm ${script}
