@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    volumes:
+      - ${DATA_DIR}/config:/etc/gitlab
+      - ${DATA_DIR}/logs:/var/log/gitlab
+      - ${DATA_DIR}/data:/var/opt/gitlab
+    ulimits:
+      nofile:
+        soft: 98304
+        hard: 98304
+    restart: always
+    hostname: ${GITLAB_HOST}
+    container_name: gitlab
+    ports:
+      - "443:443"
+      - "80:80"
+      - "2222:22"
