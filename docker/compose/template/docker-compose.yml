@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+
+  service_name:
+    image: service:latest
+    build: .
+    hostname: service
+    container_name: service
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    volumes:
+      - "${DATA_VOL}/service:/data"
+    user: root
+    depends_on:
+      - postgres-server
+    networks:
+      backend:
+    sysctls:
+      - net.ipv4.ip_local_port_range=1024 65000
+      - net.ipv4.conf.all.accept_redirects=0
+      - net.ipv4.conf.all.secure_redirects=0
+      - net.ipv4.conf.all.send_redirects=0
+    ulimits:
+      nproc: 65535
+    nofile:
+      soft: 20000
+      hard: 40000
+   cap_drop:
+     - NET_ADMIN
+     - SYS_ADMIN
+  cap_add:
+    - ALL
+
+networks:
+  backend:

@@ -11,7 +11,7 @@ sudo yum-config-manager \
 
 # 3
 
-sudo yum install -y docker-ce
+sudo yum install -y docker-ce docker-ce-cli containerd.io
 
 # 4
 

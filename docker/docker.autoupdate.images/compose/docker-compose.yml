@@ -1,0 +1,26 @@
+version: "2.4"
+
+services:
+
+  watchtower:
+    image: v2tec/watchtower:latest
+    container_name: ${COMPOSE_PROJECT_NAME}
+    hostname: ${COMPOSE_PROJECT_NAME}
+    restart: always
+    cpus: 0.1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --cleanup --schedule "0 0 23 * * *" ${UPDATE_APPS}
+
+# CRON Expression Format
+# A cron expression represents a set of times, using 6 space-separated fields.
+#
+# Field name   | Mandatory? | Allowed values  | Allowed special characters
+# ----------   | ---------- | --------------  | --------------------------
+# Seconds      | Yes        | 0-59            | * / , -
+# Minutes      | Yes        | 0-59            | * / , -
+# Hours        | Yes        | 0-23            | * / , -
+# Day of month | Yes        | 1-31            | * / , - ?
+# Month        | Yes        | 1-12 or JAN-DEC | * / , -
+# Day of week  | Yes        | 0-6 or SUN-SAT  | * / , - ?
+

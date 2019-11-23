@@ -1,6 +1,6 @@
 {
     "data-root": "/data/docker",
     "insecure-registries" : [
-	"registry.wxsoft.ru"
+	"registry.example.com"
     ]
 }
