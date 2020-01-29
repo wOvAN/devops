@@ -1,0 +1,1 @@
+sudo adduser `id -un` libvirt
