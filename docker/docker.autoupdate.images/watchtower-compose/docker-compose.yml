@@ -3,7 +3,7 @@ version: "2.4"
 services:
 
   watchtower:
-    image: v2tec/watchtower:latest
+    image: containrrr/watchtower:latest
     container_name: ${COMPOSE_PROJECT_NAME}
     hostname: ${COMPOSE_PROJECT_NAME}
     restart: always

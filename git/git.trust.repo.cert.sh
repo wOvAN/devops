@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CERT_DIR=~/.git-certs
-SERVER="gitlab.wxsoft.ru"
+SERVER="gitlab.example.com"
 PORT=443
 CERTIFICATE="${CERT_DIR}/certs.crt"
 
