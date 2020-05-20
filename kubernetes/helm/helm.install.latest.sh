@@ -19,6 +19,7 @@ if [ "$InstalledVer" != "$LatestVer" ]; then
     sudo mv ./${os}-${os_arch}/helm /usr/local/bin/helm
     sudo chmod +x /usr/local/bin/helm
     rm -f ./${file_name}
-    rm -rf ./${os}-${os_arch}/
+    rm -rf ./${os}-${os_arch}/    
+    sudo helm completion bash > /etc/bash_completion.d/helm
     echo "Installed version: [$(helm version --template="{{.Version}}")]"
 fi
