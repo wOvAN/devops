@@ -1,0 +1,26 @@
+#!/bin/bash
+
+## Performs package update on different systems with single command - "up".
+## you can pass an argument to update command ex: "up -y".
+
+## yum
+if   [ -n "$(command -v "yum")" ]; then
+    sudo yum update ${1}
+## dnf
+elif [ -n "$(command -v "dnf")" ]; then
+    sudo dnf update ${1}
+## apt-get
+elif [ -n "$(command -v "apt-get")" ]; then
+    sudo apt-get update ${1}; sudo apt-get upgrade ${1}
+## apt
+elif [ -n "$(command -v "apt")" ]; then
+    sudo apt update ${1}; sudo apt upgrade ${1}
+## not supported
+else
+    echo "No supported package manager foound."
+fi
+
+## check if reboot is requiered after update
+if [ -f /var/run/reboot-required ]; then
+    echo '<< Reboot is Required! >>'
+fi

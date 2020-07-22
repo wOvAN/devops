@@ -14,7 +14,7 @@ if [ "${InstalledVer}" != "${LatestVer}" ]; then
     curl -LO https://storage.googleapis.com/kubernetes-release/release/${LatestVer}/bin/${os}/${os_arch}/kubectl
     chmod +x ./kubectl
     sudo mv ./kubectl /usr/local/bin/kubectl
-    sudo kubectl completion bash > /etc/bash_completion.d/kubectl
+    sudo /usr/local/bin/kubectl completion bash > /etc/bash_completion.d/kubectl
     echo "Installed version: [$(kubectl version --short --client | grep -o ': .*' | cut -f2- -d ' ')]"
 fi
 

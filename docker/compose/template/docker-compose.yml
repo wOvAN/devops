@@ -25,10 +25,12 @@ services:
       - net.ipv4.conf.all.secure_redirects=0
       - net.ipv4.conf.all.send_redirects=0
     ulimits:
-      nproc: 65535
-    nofile:
-      soft: 20000
-      hard: 40000
+      nproc:
+        soft: 20000
+        hard: 40000
+      nofile:
+        soft: 20000
+        hard: 40000
    cap_drop:
      - NET_ADMIN
      - SYS_ADMIN
