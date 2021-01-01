@@ -3,24 +3,47 @@
 ## Performs package update on different systems with single command - "up".
 ## you can pass an argument to update command ex: "up -y".
 
-## yum
-if   [ -n "$(command -v "yum")" ]; then
-    sudo yum update ${1}
-## dnf
-elif [ -n "$(command -v "dnf")" ]; then
-    sudo dnf update ${1}
-## apt-get
-elif [ -n "$(command -v "apt-get")" ]; then
-    sudo apt-get update ${1}; sudo apt-get upgrade ${1}
-## apt
-elif [ -n "$(command -v "apt")" ]; then
-    sudo apt update ${1}; sudo apt upgrade ${1}
-## not supported
-else
-    echo "No supported package manager foound."
-fi
-
 ## check if reboot is requiered after update
-if [ -f /var/run/reboot-required ]; then
-    echo '<< Reboot is Required! >>'
-fi
+is_reboot_required() {
+    echo "---------------------------------------------"
+    if   [ -n "$(command -v "needs-restarting")" ]; then
+	needs-restarting -r
+    elif [ -n "$(command -v "checkrestart")" ]; then
+	# apt install -y debian-goodies
+	checkrestart
+    elif [ -n "$(command -v "needrestart")" ]; then
+	# apt install -y needrestart
+	needrestart
+    elif [ -f /var/run/reboot-required ]; then
+	echo '<< Reboot is Required! >>'
+    fi
+}
+
+## performs system update
+update_system(){
+    echo "---------------------------------------------"
+    ## dnf
+    if [ -n "$(command -v "dnf")" ]; then
+	sudo dnf update ${1}
+    ## yum
+    elif   [ -n "$(command -v "yum")" ]; then
+	sudo yum update ${1}
+    ## apt
+    elif [ -n "$(command -v "apt")" ]; then
+	sudo apt update ${1}; sudo apt upgrade ${1}
+    ## apt-get
+    elif [ -n "$(command -v "apt-get")" ]; then
+	sudo apt-get update ${1}; sudo apt-get upgrade ${1}
+    ## opkg
+    elif [ -n "$(command -v "opkg")" ]; then
+        opkg update ${1}; opkg upgrade ${1}
+    ## not supported
+    else
+	echo "No supported package manager foound."
+    fi
+}
+
+update_system ${1}
+is_reboot_required ${1}
+
+
