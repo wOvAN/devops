@@ -1,0 +1,9 @@
+[sshd]
+enabled = true
+port = 22222
+banaction = iptables-multiport
+maxretry  = 3
+findtime  = 259200
+bantime   = 608400
+filter    = sshd
+logpath = %(sshd_log)s

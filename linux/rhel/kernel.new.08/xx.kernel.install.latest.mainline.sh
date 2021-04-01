@@ -1,0 +1,1 @@
+sudo yum --enablerepo=elrepo-kernel install kernel-ml

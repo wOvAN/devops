@@ -1,6 +1,6 @@
 {
     "data-root": "/docker",
     "insecure-registries" : [
-	"registry.example.com"
+	"registry.talmer.local"
     ]
 }

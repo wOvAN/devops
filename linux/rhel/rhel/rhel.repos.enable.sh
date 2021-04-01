@@ -1,0 +1,1 @@
+yum repolist all

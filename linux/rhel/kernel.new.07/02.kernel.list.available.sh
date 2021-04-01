@@ -1,0 +1,1 @@
+yum list available --disablerepo='*' --enablerepo=elrepo-kernel
